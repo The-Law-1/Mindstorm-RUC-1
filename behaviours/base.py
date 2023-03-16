@@ -1,10 +1,9 @@
-from states import State
 
 class Behaviour:
     def __init__(self, name, ):
         self.name = name
 
-    def update(self, detectedColour, detectedProximity) -> State:
+    def update(self, detectedColour, detectedProximity):
         print(self.name + "update loop")
 
     def on_enter(self):

@@ -20,21 +20,21 @@ motor_left = Motor(Port.C)
 motor_right = Motor(Port.B)
 
 # Initialize the color sensor.
-color_sensor = ColorSensor(Port.S1)
+color_sensor = ColorSensor(Port.S2)
+IRSensor = InfraredSensor(Port.S3)
 
 # Write your program here.
 # ev3.speaker.beep()
 
 # say hello world
-ev3.speaker.say("3... 2... 1... Go!")
+ev3.speaker.say("Start!")
 
 def drive_forward(time=3000):
     motor_left.run_time(500, time, then=Stop.HOLD, wait=False)
     motor_right.run_time(500, time, then=Stop.HOLD, wait=True)
 
-
 deltaTime = 0.1
-controller = ctrl.Controller([motor_left, motor_right], None, color_sensor, deltaTime)
+controller = ctrl.Controller(ev3, [motor_left, motor_right], IRSensor, color_sensor, deltaTime)
 
 controller.run()
 
