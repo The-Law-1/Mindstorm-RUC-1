@@ -4,11 +4,12 @@ from behaviours.stop import Stop
 from behaviours.drive_backward import DriveBackward
 from behaviours.turn_right import TurnRight
 from behaviours.turn_left import TurnLeft
-from behaviours.states import STOP, DRIVE_FORWARD, DRIVE_BACKWARD, TURN_LEFT, TURN_RIGHT
+from behaviours.drive_with_object import DriveObject
+from behaviours.states import STOP, DRIVE_FORWARD, DRIVE_BACKWARD, TURN_LEFT, TURN_RIGHT, DRIVE_OBJECT
 
 class Controller():
     def __init__(self, ev3, motors, IRSensor, colourSensor, deltaTime):
-        self.behaviours = [DriveForward("Drive Forward", motors), DriveBackward("Drive Backward", motors, 1000), TurnLeft("Turn Left", motors), TurnRight("Turn Right", motors), Stop("Stop")]
+        self.behaviours = [DriveForward("Drive Forward", motors), DriveBackward("Drive Backward", motors, 1000), TurnLeft("Turn Left", motors), TurnRight("Turn Right", motors), Stop("Stop"), DriveObject("Object Detected", motors, ev3)]
         self.state = -1
         self.current_behaviour = None
         self.deltaTime = deltaTime
